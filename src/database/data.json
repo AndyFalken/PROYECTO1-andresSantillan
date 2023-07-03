@@ -1,0 +1,30 @@
+[
+	{
+		"id": 1,
+		"marca": "Asus",
+		"procesador": "i7-7200",
+		"ram": "16gb",
+		"video": "8gb"
+	},
+	{
+		"id": 2,
+		"marca": "ROG",
+		"procesador": "Ryzen 9",
+		"ram": "32gb",
+		"video": "16gb"
+	},
+	{
+		"id": 3,
+		"marca": "Lenovo",
+		"procesador": "i9-12000",
+		"ram": "16gb",
+		"video": "16gb"
+	},
+	{
+		"id": 4,
+		"marca": "DELL",
+		"procesador": "i5-7200",
+		"ram": "8gb",
+		"video": "8gb"
+	}
+]

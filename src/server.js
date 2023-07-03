@@ -7,14 +7,14 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 server.get('/laptops', (req, res) => {
-    findAll().then((laptops) => res.status(200).send(`Laptops ${laptops}`));
+    findAll().then((laptops) => res.status(200).send(laptops));
 
 });
 
 
 server.get('/laptops/:id', (req, res) => {
     const { id } = req.params;
-    findOneById(id).then((laptop)=> res.status(200).send(`Laptop ${laptop.id}`));
+    findOneById(Number(id)).then((laptop)=> res.status(200).send(laptop));
     
 });
 
@@ -22,7 +22,7 @@ server.get('/laptops/:id', (req, res) => {
 server.post('/laptops', (req, res) => {
     const { marca, procesador, ram, video } = req.body;
     const laptop = {marca, procesador, ram, video}
-    create(laptop).then(() => res.status(201).send(`Laptop creada`));
+    create(laptop).then(laptopConId => res.status(201).send(laptopConId));
 });
 
 
@@ -38,10 +38,10 @@ server.put('/laptops/:id', (req, res) => {
 server.delete('/laptops/:id', (req, res) => {
     const { id } = req.params;
     destroy(Number(id))
-        .then((laptopId) => res.status(200).send(`Laptop ${laptopId} eliminada`));
+        .then((laptop) => res.status(200).send(`Laptop ${JSON.stringify(laptop)} eliminada`));
 
 });
 
 server.listen(PORT, () => {
-    console.log(`Ejecutandose en http://localhost:${PORT}`);
+    console.log(`Ejecutandose en http://localhost:${PORT}/laptops`);
 });
