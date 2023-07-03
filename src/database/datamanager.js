@@ -35,7 +35,6 @@ function generarId(laptops) {
     return mayorId + 1;
 }
 
-
 async function findOneById(id) {
     if (!id) throw new Error("Error. El Id está indefinido.");
 
@@ -48,7 +47,7 @@ async function findOneById(id) {
 }
 
 async function findAll() {
-    const laptops = await leer()
+    const laptops = await leer();
 
     return laptops;
 }
@@ -56,10 +55,10 @@ async function findAll() {
 async function create(laptop) {
     if (!laptop?.marca || !laptop?.procesador || !laptop?.ram || !laptop?.video) throw new Error("Error. Datos incompletos.");
 
-    const laptops = await leer()
-    const laptopConId = { id: generarId(laptops), ...laptop }
+    const laptops = await leer();
+    const laptopConId = { id: generarId(laptops), ...laptop };
     laptops.push(laptopConId);
-    await escribir(laptops)
+    await escribir(laptops);
 
     return laptopConId;
 }
@@ -81,11 +80,11 @@ async function update(laptop) {
 async function destroy(id) {
     if (!id) throw new Error("Error. El Id está indefinido.");
 
-    const laptops = await leer()
+    const laptops = await leer();
     const indice = laptops.findIndex((element) => element.id === id);
 
     if (indice < 0) throw new Error("Error. El Id no corresponde a una laptop en existencia.");
-    
+
     const laptop = laptops[indice];
     laptops.splice(indice, 1);
     await escribir(laptops);
